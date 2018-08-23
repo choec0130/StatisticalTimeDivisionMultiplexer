@@ -22,7 +22,6 @@ public class STDM {
 	
 	public static void main(String[] args) {
 		
-		
 	    System.out.print("Enter the file name with extension: ");
 
 	    Scanner myScanner = new Scanner(System.in);
@@ -73,28 +72,21 @@ public class STDM {
 					
 			}
 
-			
 			tokensInStream.add(numberOfTokensInStream);
 		}
 		
 		int endOfStream = endTimes.get(endTimes.size()-1) + 1;
 		
-		
 		for (int i = 0; i < tokensInStream.size(); i++) {
-			transmitionRate = transmitionRate + ((double) tokensInStream.get(i)/(double) endOfStream) * BIT_RATE;
-			
+			transmitionRate = transmitionRate + ((double) tokensInStream.get(i)/(double) endOfStream) * BIT_RATE;	
 		}
 	
-		
 		int headerBitsNeeded = (int) (Math.log(powerOfTwo(numberOfInputSources))/Math.log(2));
-		
-		
 		
 		System.out.println("I set the original bit rate for each stream to be equal to: " + BIT_RATE);
 		System.out.println("The transmition rate calculated for this file with repspect to the original bit rate of " + BIT_RATE +  " is: " + transmitionRate);
 		System.out.println("The number of bits needed for addressing each stream is: " + headerBitsNeeded*MAX_BLOCKS_OUTPUT_BUFFER);
 		System.out.println("The frame time duration is " + endOfStream + " time units.");
-		
 		
 		for (int i = 0; i < endOfStream; i++) {
 			System.out.println("We are currently in slot " + i + ".");
@@ -115,10 +107,7 @@ public class STDM {
 					}
 					
 					System.out.println("Address of delivered block is: " + Integer.toBinaryString(alphabetCount-1));
-					
-					
 					inputBuffer.remove(0);
-			
 					count++;
 				}
 				if (startTimes.get(j) == i && count < MAX_BLOCKS_OUTPUT_BUFFER-1) {
@@ -144,10 +133,6 @@ public class STDM {
 			}
 		}
 		
-		
-
-		
-
 		//use headerBitsNeeded and i in binary to get address
 		
 		//include flag, address, and time duration of frame in output
@@ -155,7 +140,6 @@ public class STDM {
 		
 		
 }
-	
 		static int powerOfTwo(int x) {
 			x = x - 1;
 			x |= x >> 1;
